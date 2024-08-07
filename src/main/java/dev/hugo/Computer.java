@@ -58,6 +58,8 @@ public class Computer {
         this.price = price;
     }
 
+    
+
     @Override
     public String toString() {
         return "Computer [brand=" + brand + ", memory=" + memory + "GB, processor=" + processor +
