@@ -18,6 +18,7 @@ public class ShopTest {
     public void setUp() {
         shop = new Shop("PepeComp", "Pepe", "123");
         
+        
     }
 
     @Test
@@ -61,13 +62,26 @@ public class ShopTest {
     }
 
     @Test
-    public void testRemoveComputerByBrand() {
-        Computer computer = new Computer("BrandX", 16, "Intel i7", "Windows 10", 1200.0);
-        shop.addComputer(computer);
-        boolean removed = shop.removeComputerByBrand("BrandX");
-        assertThat(removed, is(true));
-        assertThat(shop.getComputers(), not(hasItem(computer)));
+    public void testRemoveComputerByBrand_Success() {
+        // Añadir algunos ordenadores a la tienda
+        shop.addComputer(new Computer("Dell", 16, "Intel i7", "Windows 10", 1200.0));
+        shop.addComputer(new Computer("HP", 8, "Intel i5", "Windows 10", 800.0));
+        shop.addComputer(new Computer("Dell", 32, "Intel i9", "Windows 11", 2000.0));
+       
+    
+        // Verifica que hay cuatro ordenadores antes de eliminar uno
+        assertThat(shop.getComputers(), hasSize(3));
+        assertThat(shop.getComputers(), hasItem(hasProperty("brand", is("Dell"))));
+    
+        // Intenta eliminar un ordenador de marca "Dell"
+        boolean result = shop.removeComputerByBrand("Dell");
+    
+        // Verifica que el ordenador fue eliminado
+        assertThat(result, is(true));
+        assertThat(shop.getComputers(), hasSize(2));
+        assertThat(shop.getComputers(), hasItem(hasProperty("brand", is("Dell"))));
     }
+    
 
     @Test
     public void testFindComputerByBrand() {

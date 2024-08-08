@@ -8,7 +8,7 @@ public class Computer {
     private String operatingSystem;
     private double price;
 
-    // Constructor
+    
     public Computer(String brand, int memory, String processor, String operatingSystem, double price) {
         this.brand = brand;
         this.memory = memory;
@@ -17,7 +17,7 @@ public class Computer {
         this.price = price;
     }
 
-    // Getters and Setters
+    
     public String getBrand() {
         return brand;
     }
