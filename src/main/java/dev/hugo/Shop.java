@@ -54,14 +54,21 @@ public class Shop {
 
 
     
-   
+   //Computer es la plantilla(objeto) , computer es el objeto real al q me refiero
     public void addComputer(Computer computer) {
-        computers.add(computer);
+        computers.add(computer);//a la lista computers, añademe un computer
     }
 
     
     public boolean removeComputerByBrand(String brand) {
-        return computers.removeIf(computer -> computer.getBrand().equals(brand));
+        for (int i = 0; i < computers.size(); i++) {
+            Computer computer = computers.get(i);
+            if (computer.getBrand().equals(brand)) {
+                computers.remove(i); // Elimina el primer ordenador con la marca dada, solo elimina uno
+                return true; // Retorna true porque se eliminó un ordenador
+            }
+        }
+        return false; // Retorna false si no se encontró ningún ordenador con la marca dada
     }
 
     
