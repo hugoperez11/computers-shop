@@ -59,18 +59,10 @@ public class Shop {
         computers.add(computer);//a la lista computers, añademe un computer
     }
 
-    
-    public boolean removeComputerByBrand(String brand) {
-        for (int i = 0; i < computers.size(); i++) {
-            Computer computer = computers.get(i);
-            if (computer.getBrand().equals(brand)) {
-                computers.remove(i); // Elimina el primer ordenador con la marca dada, solo elimina uno
-                return true; // Retorna true porque se eliminó un ordenador
-            }
-        }
-        return false; // Retorna false si no se encontró ningún ordenador con la marca dada
+ 
+    public boolean removeComputer(String brand) {
+        return computers.removeIf(c -> c.getBrand().equalsIgnoreCase(brand));
     }
-
     
     public Computer findComputerByBrand(String brand) {
         return computers.stream()
